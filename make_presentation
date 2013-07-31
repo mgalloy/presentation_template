@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+# Usage:
+#
+#   make_presentation dir title
+#
+# For example:
+#
+#   make_presentation ~/reports/rmft-phase-2 "RMFT Phase II"
+
+# give help if no arguments
+if [ $# -ne 2 ]; then
+  echo "syntax: make_presentation dir title"
+  exit 1
+fi
+
+  
+# setup from command line arguments
+DIR=$1
+LOCATION=`dirname $0`
+FILENAME=`basename $1`
+TITLE=$2
+
+# create output directory if doesn't exist already
+if [ ! -d $DIR ]; then 
+  echo "Creating $DIR"
+  mkdir -p $DIR
+fi
+
+# copy files to output directory
+echo "Coping files to $DIR"
+cp $LOCATION/beamercolorthemeeagle.sty $DIR/beamercolorthemeeagle.sty
+cp $LOCATION/beamerthemeBoulder.sty $DIR/beamerthemeBoulder.sty
+
+# substitute WHITEPAPER_TITLE into Makefile
+sed -e "s/PRESENTATION_TITLE/${FILENAME}/" $LOCATION/Makefile > $DIR/Makefile
+sed -e "s/PRESENTATION_TITLE/${TITLE}/" $LOCATION/presentation.tex > $DIR/${FILENAME}.tex
