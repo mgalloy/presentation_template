@@ -1,6 +1,6 @@
 TITLE=PRESENTATION_TITLE
 
-LATEX=pdflatex
+LATEX=xelatex
 
 .PHONY: clean all
 
