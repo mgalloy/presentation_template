@@ -11,4 +11,4 @@ $(TITLE).pdf: $(TITLE).tex
 	$(LATEX) $(TITLE)
 
 clean:
-	rm -f $(TITLE).out $(TITLE).log $(TITLE).toc $(TITLE).aux $(TITLE).nav $(TITLE).snm $(TITLE).pdf
+	rm -f $(TITLE).out $(TITLE).log $(TITLE).toc $(TITLE).aux $(TITLE).nav $(TITLE).snm $(TITLE).vrb $(TITLE).pdf
